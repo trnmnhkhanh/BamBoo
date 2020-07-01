@@ -1,14 +1,11 @@
 {
-  "name": "bamboo",
+  "name": "1-helloworld",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dangtrunghieu1999/BamBoo.git"
   },
   "author": "",
   "license": "ISC",
@@ -24,9 +21,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
-  },
-  "bugs": {
-    "url": "https://github.com/dangtrunghieu1999/BamBoo/issues"
-  },
-  "homepage": "https://github.com/dangtrunghieu1999/BamBoo#readme"
+  }
 }

@@ -1,2 +1,1 @@
-# BamBoo
-### Our project is so cool, right? 
+### My first project using express to code web server on NodeJS
