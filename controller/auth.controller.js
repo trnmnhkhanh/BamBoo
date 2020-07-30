@@ -46,3 +46,8 @@ module.exports.postLogin = function(req, res) {
 
 }
 
+//signup, render forget password
+module.exports.forgetPw = function(req, res) {
+	res.render('auth/forgetpw');
+};
+
