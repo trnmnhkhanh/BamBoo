@@ -118,5 +118,46 @@ module.exports.postForgetPw = function(req, res) {
 
 
 }
+// post sign up
+module.exports.postSignup = function(req, res) {
+
+	/**
+	 * 1. Nếu email đã tồn tại thì thông báo lỗi
+	 * 2. Nếu email chưa tồn tại
+	 * 	2.1. Gắn cho nó một cái id
+	 *  2.2. Đổi mật khẩu thành md5
+	 *  2.3. Đăng nhập nó
+	 *  2.4. Riderect tới trang chủ
+	 */
+
+	// Kiểm tra email có trong db không?
+	let user = db.get('users').find({email: req.body.email}).value();
+
+	// Nếu có thì hiển thị lỗi và return
+	if(user) {
+		res.render('auth/signup', {
+			errors: ['User already exists.'],
+			values: req.body
+		})
+
+		return;
+	}
+	// Gán cho nó một cái id
+	req.body.id = shortid.generate();
+
+	// Chuyển mật khẩu thành md5
+	req.body.password = md5(req.body.password);
+
+	db.get('users').push(req.body).write();
+
+
+
+	// Nếu okie, thì set cho nó một cái cookie và có signed, redirect sang trang user
+	res.cookie('userID', req.body.id, {signed: true});
+	res.redirect('/user');
+
+
+}
+
 
 
