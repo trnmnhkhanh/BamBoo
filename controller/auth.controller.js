@@ -25,6 +25,13 @@ module.exports.postLogin = function(req, res) {
 
 		return;
 	}
+
+	if(user.active === 0) {
+		res.redirect('./active');
+		// render: path, object
+
+		return;
+	}
 	
 	// Nếu có thì transform password thành md5 và so sánh trong database
 	let hashPassword = md5(password);
