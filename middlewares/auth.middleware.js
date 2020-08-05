@@ -1,7 +1,7 @@
 const db = require('../db');
-
 module.exports.requireAuth = function(req, res, next) {
 
+// Lấy ra cookie khi đã signedCookie
 if(!req.signedCookies.userID) {
 	res.redirect('/auth/login');
 	return;
@@ -15,8 +15,8 @@ if(!user) {
 	return ;
 
 }
-
-res.locals.user = user;
+// Gán cho các middle ở sau biến user
+res.locals.user = user; 
 
 next();
 

@@ -1,10 +1,40 @@
 const md5 = require('md5');
-
+const shortid = require('shortid');
 const db = require('../db');
 
-//login, render login
+// gửi mail
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
+
+var transporter = nodemailer.createTransport(smtpTransport({
+	service: 'gmail',
+	host: 'smtp.gmail.com',
+	auth: {
+		user: 'thuongnguyen.nlu78@gmail.com',
+		pass: 'chkdskbong'
+	}
+}));
+
+
+
+// login, render login
 module.exports.login = function(req, res) {
-	res.render('auth/login')
+	res.render('auth/login');
+};
+
+// signup, render sign up
+module.exports.signup = function(req, res) {
+	res.render('auth/signup');
+};
+
+// signup, render forget password
+module.exports.forgetPw = function(req, res) {
+	res.render('auth/forgetpw');
+};
+
+// signup, render forget password
+module.exports.active = function(req, res) {
+	res.render('auth/active');
 };
 
 //post login
@@ -53,6 +83,8 @@ module.exports.postLogin = function(req, res) {
 
 }
 
+// post forget password
+
 //signup, render forget password
 module.exports.forgetPw = function(req, res) {
 	res.render('auth/forgetpw');
@@ -97,8 +129,6 @@ module.exports.postForgetPw = function(req, res) {
 		text: newPassword
 	};
 
-
-
 	transporter.sendMail(mailOptions, function(error, info){
 		if (error) {
 			console.log(error);
@@ -119,4 +149,36 @@ module.exports.postForgetPw = function(req, res) {
 
 }
 
+// signup, render forget password
+module.exports.postActive = function(req, res) {
+	
+	let email = req.body.email;
+	let code = req.body.code;
+
+	let user = db.get('users').find({email: email}).value();
+
+	if(!user) {
+		res.render('auth/active', {
+			errors: ['Email wrong !.'],
+			values: req.body
+		})
+
+		return;
+	}
+
+	if(user.id !== code) {
+		res.render('auth/active', {
+			errors: ['Code wrong !.'],
+			values: req.body
+		})
+
+		return;
+	}
+
+	db.get('users').find({email:email}).set('active', 1).write();
+
+	res.redirect('/')
+
+	
+};
 

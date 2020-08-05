@@ -8,5 +8,15 @@ router.get('/login', controller.login);
 
 router.post('/login', controller.postLogin)
 
+router.get('/signup', controller.signup)
 
-module.exports = router;
+router.post('/signup', controller.postSignup)
+
+router.get('/forgetpw', controller.forgetPw);
+
+router.post('/forgetpw', controller.postForgetPw)
+
+router.get('/active', controller.active);
+
+router.post('/active', controller.postActive);
+
