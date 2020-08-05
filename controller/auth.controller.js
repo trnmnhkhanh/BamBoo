@@ -1,10 +1,40 @@
 const md5 = require('md5');
-
+const shortid = require('shortid');
 const db = require('../db');
 
-//login, render login
+// gửi mail
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
+
+var transporter = nodemailer.createTransport(smtpTransport({
+	service: 'gmail',
+	host: 'smtp.gmail.com',
+	auth: {
+		user: 'thuongnguyen.nlu78@gmail.com',
+		pass: 'chkdskbong'
+	}
+}));
+
+
+
+// login, render login
 module.exports.login = function(req, res) {
-	res.render('auth/login')
+	res.render('auth/login');
+};
+
+// signup, render sign up
+module.exports.signup = function(req, res) {
+	res.render('auth/signup');
+};
+
+// signup, render forget password
+module.exports.forgetPw = function(req, res) {
+	res.render('auth/forgetpw');
+};
+
+// signup, render forget password
+module.exports.active = function(req, res) {
+	res.render('auth/active');
 };
 
 //post login
