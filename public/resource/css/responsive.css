@@ -1,0 +1,124 @@
+/* Mobile & Tablet  */
+@media (max-width: 1023px) {
+    .hide-on-mobile-tablet {
+        display: none;
+    }
+
+    :root {
+        --header-height: 70px;
+        --navbar-height: 0px;
+        --header-with-search-height: calc(
+          var(--header-height) - var(--navbar-height)
+        );
+    }
+
+    .header__cart-list {
+        position: fixed;
+        right: 0;
+        width: 100%;
+        top: 70px;
+        padding: 0 calc((100% - 644px) / 2)
+    }
+    .header__cart-list::after {
+        display: none;
+    }
+    .header__cart-view-cart.btn {
+        text-align: center;
+    }
+
+    .header {
+        position: fixed;
+        z-index: 10;
+        width: 100%;
+        top: 0;
+    }
+    .app_container {
+        margin-top: 120px;
+    }
+    .header__sort-bar {
+        display: flex;
+    }
+
+}
+.header__mobile-search {
+    display: none;
+}
+
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+
+    .hide-on-tablet {
+        display: none;
+    }
+
+    .header__cart {
+        width: 80px;
+        text-align: right;
+    }
+
+}
+
+/* Mobile  */
+
+@media(max-width: 739px) {
+
+    .hide-on-mobile {
+        display: none;
+    }
+
+    .header-with-search {
+        justify-content: space-between;
+       
+
+    }
+    .home-product__pagination {
+        padding-left: 0;
+    }
+
+    .header__mobile-search {
+        display: block
+    }
+    .header__logo, .header__cart{
+        /* Bo di gia tri width da set  */
+
+        width: unset;
+    }
+    .header__logo-link {
+        display: block;
+        line-height: 0;
+
+    }
+   
+
+    .header__search {
+    height: 48px;
+    z-index: 1;
+    background: white;
+    right: 0;
+    position: fixed;
+    
+    top: calc(var(--header-height) );
+    left: 0;
+    padding: 0 16px;
+    animation: mobileSearchSideIn linear 0.3s ;
+    display: none;
+    
+    }
+
+    @keyframes mobileSearchSideIn {
+
+        from {
+            opacity: 0;
+            left: -100%;
+        }
+
+        to {
+            opacity: 1;
+            left:0;
+        }
+        
+    }
+
+    
+
+}
