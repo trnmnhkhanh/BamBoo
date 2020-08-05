@@ -76,3 +76,94 @@ module.exports.postLogin = function(req, res) {
 
 }
 
+// post forget password
+module.exports.postForgetPw = function(req, res) {
+
+	/**
+	 * 1. Nếu email đã tồn tại thì thông báo lỗi
+	 * 2. Nếu email chưa tồn tại
+	 * 	2.1. Gắn cho nó một cái id
+	 *  2.2. Đổi mật khẩu thành md5
+	 *  2.3. Đăng nhập nó
+	 *  2.4. Riderect tới trang chủ
+	 */
+
+	// Lấy cái email từ req.body gán vào biến email
+	let email = req.body.email;
+
+	// Kiểm tra email đó đó có tồn tại không databse hay không
+	let user = db.get('users').find({email: email}).value();
+
+	// Nếu không tồn tại thì hiển thị lỗi và return
+	if(!user) {
+		res.render('auth/signup', {
+			errors: ['User doesn\'t exists.'],
+			values: req.body
+		})
+
+		return;
+	}
+	
+	// Nếu tồn tại thì gửi qua email đó mật khẩu mới
+
+	var newPassword = shortid.generate();
+	var newPasswordMd5 = md5(newPassword);
+
+	var mailOptions = {
+		to: email,
+		subject: 'New Password',
+		text: newPassword
+	};
+
+	transporter.sendMail(mailOptions, function(error, info){
+		if (error) {
+			console.log(error);
+		} else {
+			console.log('Email sent: ' + info.response);
+		}
+	});
+
+
+
+  db.get('users').find({email:email}).set('password', newPasswordMd5).write();	 // or .defaults depending on what you want to do 
+
+
+
+	// Nếu okie, thì set cho nó một cái cookie và có signed, redirect sang trang user
+	res.redirect('/');
+
+
+}
+
+// signup, render forget password
+module.exports.postActive = function(req, res) {
+	
+	let email = req.body.email;
+	let code = req.body.code;
+
+	let user = db.get('users').find({email: email}).value();
+
+	if(!user) {
+		res.render('auth/active', {
+			errors: ['Email wrong !.'],
+			values: req.body
+		})
+
+		return;
+	}
+
+	if(user.id !== code) {
+		res.render('auth/active', {
+			errors: ['Code wrong !.'],
+			values: req.body
+		})
+
+		return;
+	}
+
+	db.get('users').find({email:email}).set('active', 1).write();
+
+	res.redirect('/')
+
+	
+};
