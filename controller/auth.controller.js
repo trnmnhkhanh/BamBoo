@@ -55,6 +55,13 @@ module.exports.postLogin = function(req, res) {
 
 		return;
 	}
+
+	if(user.active === 0) {
+		res.redirect('./active');
+		// render: path, object
+
+		return;
+	}
 	
 	// Nếu có thì transform password thành md5 và so sánh trong database
 	let hashPassword = md5(password);
@@ -77,6 +84,13 @@ module.exports.postLogin = function(req, res) {
 }
 
 // post forget password
+
+//signup, render forget password
+module.exports.forgetPw = function(req, res) {
+	res.render('auth/forgetpw');
+};
+
+// post forget pw
 module.exports.postForgetPw = function(req, res) {
 
 	/**
@@ -167,3 +181,4 @@ module.exports.postActive = function(req, res) {
 
 	
 };
+
