@@ -1,0 +1,36 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet', href='/resource/css/style.css')
+  title Kích hoạt tài khoản
+.main 
+  form#form-1.form(action='/auth/active', method='POST')
+    h3.heading Kích hoạt tài khoản
+    if errors
+      each error in errors
+        .spacer= error
+    .form-group
+      label.form-label(for='email') Email
+      input#email.form-control(name='email', type='text', placeholder='Nhập email active')
+      span.form-message
+    .form-group
+      label.form-label(for='code') Mã code
+      input#code.form-control(name='code', type='text', placeholder='Nhập mã code')
+      span.form-message
+    
+    button.form-submit Active
+script(src='/resource/js/validator.js')
+script.
+  Validator({
+  form: '#form-1',
+  errorSelector: '.form-message',
+  formGroupSelector: '.form-group',
+  rules: [
+  
+  ],
+  // onSubmit: function(data) {
+  //   //CALL API
+  //   console.log(data);
+  // }
+  });
