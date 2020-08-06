@@ -62,31 +62,11 @@ head
             a(href='#')
               i.zmdi.zmdi-pin-help
             a.header__navbar-item-link(href='#') Tr&#x1EE3; gi&uacute;p
-          // Đăng kí, đăng nhập
-          //
-            <li class="header__navbar-item header__navbar-item--separate">
-            <a href="#" class="header__navbar-item-link register"
-            >Đăng kí</a
-            >
-            </li>
-            <li class="header__navbar-item">
-            <a href="#" class="header__navbar-item-link log-in"
-            >Đăng nhập</a
-            >
-            </li>
-          li.header__navbar-item.header__navbar-user
-            img.header__navbar-user-img(src='./resource/img/cat-avatar.jpg', alt='')
-            span.header__navbar-user-name= user.fullname
-            ul.header__navbar-user-menu
-              li.header__navbar-user-item
-                a(href='#') T&agrave;i kho&#x1EA3;n c&#x1EE7;a t&ocirc;i
-              li.header__navbar-user-item
-                a(href='#') &Dstrok;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a t&ocirc;i
-              li.header__navbar-user-item
-                a(href='#') &Dstrok;&#x1A1;n mua
-              li.header__navbar-user-item.header__navbar-user-item--separate
-                a(href='./user/signout') &Dstrok;&abreve;ng xu&#x1EA5;t
-      // Header with search
+            li.header__navbar-item.header__navbar-item--separate
+              a(href="/auth/signup").header__navbar-item-link.register Đăng kí
+            li.header__navbar-item
+              a(href="/auth/login").header__navbar-item-link.log-in Đăng nhập
+          
       .header-with-search
         label.header__mobile-search(for='mobile-search-checkbox')
           i.header__mobile-search-icon.zmdi.zmdi-search
@@ -260,13 +240,13 @@ head
             ul.category-list
               li.category-item.category-item--active
                 a.category-item__link(href='#')
+                  | Áo khoác giá tốt
+              li.category-item
+                a.category-item__link(href='#')
                   | Áo thun nhập khẩu
               li.category-item
                 a.category-item__link(href='#')
                   | Áo nam đẹp, rẻ
-              li.category-item
-                a.category-item__link(href='#')
-                  | Áo khoác giá tốt
         .col.l-10.m-12.c-12
           .home-filter.hide-on-mobile-tablet
             span.home-filter__lable S&#x1EAF;p x&#x1EBF;p theo
