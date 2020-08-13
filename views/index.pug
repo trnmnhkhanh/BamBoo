@@ -15,7 +15,7 @@ head
       nav.header__navbar.hide-on-mobile-tablet
         ul.header__navbar-list
           li.header__navbar-item.header__navbar-item--qr.header__navbar-item--separate
-            a.header__navbar-item-link(href='#') V&agrave;o c&#x1EED;a h&agrave;ng tr&ecirc;n &#x1EE9;ng d&#x1EE5;ng F8-Shop
+            a.header__navbar-item-link(href='#') V&agrave;o c&#x1EED;a h&agrave;ng tr&ecirc;n &#x1EE9;ng d&#x1EE5;ng BamBoo
             .header__qr
               img.header__qr-img(src='./resource/img/qrcode.png', alt='')
               .header__app-link
@@ -62,31 +62,11 @@ head
             a(href='#')
               i.zmdi.zmdi-pin-help
             a.header__navbar-item-link(href='#') Tr&#x1EE3; gi&uacute;p
-          // Đăng kí, đăng nhập
-          //
-            <li class="header__navbar-item header__navbar-item--separate">
-            <a href="#" class="header__navbar-item-link register"
-            >Đăng kí</a
-            >
-            </li>
-            <li class="header__navbar-item">
-            <a href="#" class="header__navbar-item-link log-in"
-            >Đăng nhập</a
-            >
-            </li>
-          li.header__navbar-item.header__navbar-user
-            img.header__navbar-user-img(src='./resource/img/cat-avatar.jpg', alt='')
-            span.header__navbar-user-name Th&#x1B0;&#x1EDD;ng Nguy&#x1EC5;n
-            ul.header__navbar-user-menu
-              li.header__navbar-user-item
-                a(href='#') T&agrave;i kho&#x1EA3;n c&#x1EE7;a t&ocirc;i
-              li.header__navbar-user-item
-                a(href='#') &Dstrok;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a t&ocirc;i
-              li.header__navbar-user-item
-                a(href='#') &Dstrok;&#x1A1;n mua
-              li.header__navbar-user-item.header__navbar-user-item--separate
-                a(href='#') &Dstrok;&abreve;ng xu&#x1EA5;t
-      // Header with search
+            li.header__navbar-item.header__navbar-item--separate
+              a(href="/auth/signup").header__navbar-item-link.register Đăng kí
+            li.header__navbar-item
+              a(href="/auth/login").header__navbar-item-link.log-in Đăng nhập
+          
       .header-with-search
         label.header__mobile-search(for='mobile-search-checkbox')
           i.header__mobile-search-icon.zmdi.zmdi-search
@@ -260,13 +240,13 @@ head
             ul.category-list
               li.category-item.category-item--active
                 a.category-item__link(href='#')
-                  | Trang &dstrok;i&#x1EC3;m m&#x1EB7;t
+                  | Áo khoác giá tốt
               li.category-item
                 a.category-item__link(href='#')
-                  | Trang &dstrok;i&#x1EC3;m m&ocirc;i
+                  | Áo thun nhập khẩu
               li.category-item
                 a.category-item__link(href='#')
-                  | Trang &dstrok;i&#x1EC3;m m&#x1EAF;t
+                  | Áo nam đẹp, rẻ
         .col.l-10.m-12.c-12
           .home-filter.hide-on-mobile-tablet
             span.home-filter__lable S&#x1EAF;p x&#x1EBF;p theo
@@ -405,3 +385,120 @@ head
   .grid.wide
     p
       | Copyright &copy; 2020 by thuongnguyen. All rights reserved.
+// Modal layout
+//
+  <div class="modal">
+  <div class="modal__overlay"></div>
+  <div class="modal__body">
+// Authen form
+// Login form
+//
+  <div class="auth-form">
+  <div class="auth-form__container">
+  <div class="auth-form-header">
+  <h3 class="auth-form__heading">Đăng kí</h3>
+  <span class="auth-form__swich-btn">Đăng nhập</span>
+  </div>
+  <div class="auth-form__form">
+  <div class="auth-form__group">
+  <input
+  type="text"
+  class="auth-form__input"
+  placeholder="Email của bạn"
+  />
+  </div>
+  <div class="auth-form__group">
+  <input
+  type="password"
+  class="auth-form__input"
+  placeholder="Password của bạn"
+  />
+  </div>
+  <div class="auth-form__group">
+  <input
+  type="password"
+  class="auth-form__input"
+  placeholder="Nhập lại password của bạn"
+  />
+  </div>
+  </div>
+  <div class="auth-form__aside">
+  <p class="auth-form__policy-text">
+  Bằng việc đăng kí, bạn đã đồng ý về F8Shop về
+  <a href="#" class="auth-form__text-link"
+  >Điều khoản dịch vụ</a
+  >
+  &
+  <a href="#" class="auth-form__text-link"
+  >Chính sách bảo mật</a
+  >
+  </p>
+  <div class="auth-form__controls">
+  <button class="btn">TRỞ LẠI</button>
+  <button class="btn btn--primary btn--dissable">ĐĂNG KÍ</button>
+  </div>
+  </div>
+  </div>
+  <div class="auth-form__socials">
+  <a href="#" class=" btn--with-icon">
+  <i class="zmdi zmdi-facebook-box fb"></i>
+  <span> Kết nối với Facebook</span>
+  </a>
+  <a href="#" class="btn--with-icon">
+  <i class="zmdi zmdi-google-plus gg"></i>
+  <span>Kết nối với Google</span>
+  </a>
+  </div>
+  </div>
+// Login form
+//
+  <div class="auth-form">
+  <div class="auth-form__container">
+  <div class="auth-form-header">
+  <h3 class="auth-form__heading">Đăng nhập</h3>
+  <span class="auth-form__swich-btn">Đăng kí</span>
+  </div>
+  <div class="auth-form__form">
+  <div class="auth-form__group">
+  <input
+  type="text"
+  class="auth-form__input"
+  placeholder="Email của bạn"
+  />
+  </div>
+  <div class="auth-form__group">
+  <input
+  type="password"
+  class="auth-form__input"
+  placeholder="Password của bạn"
+  />
+  </div>
+  </div>
+  <div class="auth-form__aside">
+  <div class="auth-form__help">
+  <a href="#" class="auth-form__help-link">Quên mật khẩu</a>
+  <span></span>
+  <a href="#" class="auth-form__help-link">Cần trợ giúp?</a>
+  </div>
+  </div>
+  <div class="auth-form__controls">
+  <button class="btn">TRỞ LẠI</button>
+  <button class="btn btn--primary btn--dissable">
+  ĐĂNG NHẬP
+  </button>
+  </div>
+  </div>
+  <div class="auth-form__socials">
+  <a href="#" class="btn--with-icon">
+  <i class="zmdi zmdi-facebook-box fb"></i>
+  <span>Login by Facebook</span>
+  </a>
+  <a href="#" class="btn--with-icon">
+  <i class="zmdi zmdi-google-plus gg"></i>
+  <span>Login by Google</span>
+  </a>
+  </div>
+  </div>
+//
+  </div>
+  </div>

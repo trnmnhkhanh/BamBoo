@@ -1,4 +1,5 @@
 const db = require('../db');
+
 module.exports.requireAuth = function(req, res, next) {
 
 // Lấy ra cookie khi đã signedCookie
@@ -8,7 +9,6 @@ if(!req.signedCookies.userID) {
 }
 
 let user = db.get('users').find({ id: req.signedCookies.userID }).value();
-
 
 if(!user) {
 	res.redirect('/auth/login');
