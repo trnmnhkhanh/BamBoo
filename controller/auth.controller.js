@@ -148,15 +148,6 @@ module.exports.postSignup = function(req, res) {
 // post sign up
 module.exports.postForgetPw = function(req, res) {
 
-	/**
-	 * 1. Nếu email đã tồn tại thì thông báo lỗi
-	 * 2. Nếu email chưa tồn tại
-	 * 	2.1. Gắn cho nó một cái id
-	 *  2.2. Đổi mật khẩu thành md5
-	 *  2.3. Đăng nhập nó
-	 *  2.4. Riderect tới trang chủ
-	 */
-
 	// Lấy cái email từ req.body gán vào biến email
 	let email = req.body.email;
 
@@ -198,7 +189,7 @@ module.exports.postForgetPw = function(req, res) {
 
 
 
-	// Nếu okie, thì set cho nó một cái cookie và có signed, redirect sang trang user
+	// redirect sang trang 
 	res.redirect('/');
 
 
