@@ -138,8 +138,8 @@ module.exports.postSignup = function(req, res) {
 	// thêm user vào db
 	db.get('users').push(req.body).write();
 
-	// Nếu okie, thì set cho nó một cái cookie và có signed, redirect sang trang user
 	//rederect
+	// điều hướng sang trang active
 	res.redirect('/auth/active');
 
 
